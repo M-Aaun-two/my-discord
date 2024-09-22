@@ -1,0 +1,421 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #1a1a1a, #222, #2a2a2a);
+    color: white;
+    min-height: 100vh;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+    z-index: -1;
+}
+
+.square {
+    background-color: rgba(34, 34, 34, 0.3);
+    border: 1px solid rgba(51, 51, 51, 0.7);
+    transition: background-color 0.3s, border-color 0.3s;
+    box-shadow: 0 0 10px 0 rgba(51, 51, 51, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px 0 rgba(51, 51, 51, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px 0 rgba(51, 51, 51, 0.8);
+    }
+}
+
+/*Section1 Hero section*/
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+/*announcement span design*/
+.announcement {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.announcement span {
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+/*Typography*/
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: rgb(190, 181, 181);
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*Button and its animations*/
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 1000px;
+    color: white;
+    background: transparent;
+    border: none;
+    overflow: hidden;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+    60deg,
+    hsl(224, 85%, 66%),
+    hsl(269, 85%, 66%),
+    hsl(314, 85%, 66%),
+    hsl(359, 85%, 66%),
+    hsl(44, 85%, 66%),
+    hsl(89, 85%, 66%),
+    hsl(134, 85%, 66%),
+    hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    border-radius: 1000px;
+    z-index: -1;
+    animation: moveGradient 4s alternate infinite;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #222;
+    border-radius: 1000px;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover::after {
+    opacity: 0;
+}
+
+.btn:hover {
+    background: transparent;
+    transform: scale(1.05);
+}
+
+/* Section 2 Feature Section */
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.f-head {
+    font-weight: 800;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 52px;
+}
+
+/* Feature div */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    justify-items: center;
+}
+
+.container .card {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: rgba(45, 45, 45, 1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    border: 1px solid black;
+}
+
+.container .card:hover {
+    transform: translateY(-10px);
+}
+
+.container .card::before {
+    content: '';
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(var(--clr), transparent, transparent);
+    width: 700px;
+    height: 700px;
+    opacity: 0;
+    transition: 0.5s, top 0s, left 0s;
+}
+
+.container .card:hover::before {
+    opacity: 0.75;
+}
+
+.container .card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 18px;
+    background: rgba(45, 45, 45, 0.9);
+    z-index: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container .card:hover .card-content {
+    transform: scale(1.05);
+}
+
+.c-head {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.c-para {
+    margin: 0 8px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.fas {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+/* Assigning class-based styles for footer */
+.footer-title {
+    font-weight: 500;
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .fo-para {
+    text-align: center;
+  }
+  
+  p {
+    color: rgba(255, 255, 255, 0.7); /* Increased opacity for better contrast */
+  }
+  
+  .footer-backdrop {
+    z-index: -5;
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    mask-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.5) 10%,
+      rgba(0, 0, 0, 0.8) 20%,
+      rgba(0, 0, 0, 1) 30%,
+      rgb(0, 0, 0)
+    );
+  }
+  
+  .footer-rights {
+    color: #818181;
+    font-size: smaller;
+    text-align: center;
+  }
+  
+  /* Ensuring footer layout doesn't affect the rest of the page */
+  #footer {
+    z-index: 500;
+    width: 100%;
+    height: auto; /* Adjust height based on content */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    padding-top: 10rem;
+    position: relative;
+    
+    /* Initial state for the animation */
+    transform: translateY(80vh);
+    opacity: 0;
+    animation: slideUp 1.5s ease-out forwards;
+  }
+  
+  @keyframes slideUp {
+    to {
+      transform: translateY(0); /* Moves footer to its original position */
+      opacity: 1;
+    }
+  }
+  
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 0.3) 20%,
+      rgba(0, 0, 0, 0.6) 30%,
+      rgba(0, 0, 0, 0.8) 40%,
+      rgba(0, 0, 0, 1) 50%,
+      rgb(0, 0, 0)
+    );
+    z-index: -7;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    :root {
+      --m: 3rem;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    #footer {
+      flex-direction: column;
+      padding: 5rem 20vw;
+    }
+    .footer-col {
+      width: 100%;
+    }
+  }
+  
+/*Responsiveness*/
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .velocity-text {
+        font-size: 7rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-section {
+        padding: 0 40px;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        text-align: left;
+        margin-left: 20px;
+        line-height: 2.7rem;
+    }
+    p {
+        text-align: left;
+        letter-spacing: 0;
+        line-height: 1.2rem;
+        margin-left: 20px;
+    }
+    .f-head {
+        font-size: 36px;
+    }
+}
